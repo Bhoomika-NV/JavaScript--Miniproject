@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_validation</title>
+    <link rel =" stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+
+        .form-control{
+             background-color: chartreuse;
+             width: 300px;
+             border-radius: 30%;
+             color: black;
+           }
+           
+        
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            background-color: black;
+            border-radius: 250px;
+            width: 50%;
+          
+        }
+        span{
+            background-color: yellow;
+        }
+        label{
+            font-weight: bolder;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body><div>
+    <form onsubmit="return validate()"  action="https://sheetdb.io/api/v1/2hv816sh0q8q6" method="post" id="sheetdb-form">
+    <label >NAME</label>
+    <input type="text"  id="uname"  name="data[uname]" class = "form-control"  placeholder="Eg.Darshtugudeep">
+
+    <span id="msg"  style="color: red;"></span>
+
+    <br>
+
+    <label for="">phoneNUmber</label>
+    <input type="tel"  id="uno" name="data[uno]" class="form-control" placeholder="10 digits only">
+    <span  id="msg1" style="color: red;"></span>
+     <br>
+
+
+     <label>Email</label>
+     <input type="email" name="data[mail]"   class="form-control" placeholder="darsh@gmail.com"><br>
+
+    <label for="">Password</label>
+    <input type="password"    id="up"   name="data[up]" class="form-control" placeholder="6 chars">
+    <span id="msg3" style="color: red;"></span>
+    <br>
+
+    <label for>confirm password</label>
+    <input type="password" id="cup"  name="data[cup]"  class="form-control">
+    <br>
+    <input type="submit"  id="btn"  class=" btn btn-success"   >
+    </form>
+</div>
+    <script src="form_validation.js">
+         
+         var form =document.getElementById("sheetdb-form")
+         form.addEventListener("submit",e=>{ e.preventDefault()
+                                            fetch(form.action , {
+                                                method:"post",
+                                                body:new FormData(document.getElementById("sheetdb-form"))
+                                            }).then(Response=>response.json())
+                                            
+                                             
+                                            })
+    </script>
+
+
+    </body>
+</html>
